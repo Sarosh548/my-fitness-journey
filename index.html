@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Fitness Journey · 57kg → 70kg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR NAV -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-mark">FJ</span>
+      <span class="logo-text">FitnessJourney</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#dashboard" class="nav-link active" data-page="dashboard">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a href="#today" class="nav-link" data-page="today">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 15.5"/></svg>
+        Today
+      </a>
+      <a href="#workout" class="nav-link" data-page="workout">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 6.5h11M6.5 17.5h11M4 12h16M7 9.5V6.5M17 9.5V6.5M7 17.5v-3M17 17.5v-3"/></svg>
+        Workout
+      </a>
+      <a href="#nutrition" class="nav-link" data-page="nutrition">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        Nutrition
+      </a>
+      <a href="#progress" class="nav-link" data-page="progress">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Progress
+      </a>
+      <a href="#schedule" class="nav-link" data-page="schedule">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Schedule
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="phase-indicator" id="sidebar-phase">
+        <span class="phase-dot"></span>
+        <span id="phase-text">Month 1 · Home</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MOBILE TOP BAR -->
+  <header class="mobile-header">
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="mobile-logo">FitnessJourney</span>
+    <span id="mobile-date" class="mobile-date"></span>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main" id="main">
+
+    <!-- DASHBOARD PAGE -->
+    <section class="page active" id="page-dashboard">
+      <div class="page-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="subtitle" id="dash-date"></p>
+        </div>
+        <div class="phase-badge" id="dash-phase-badge">Phase 1 · Home Workouts</div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Current Weight</div>
+          <div class="stat-value" id="stat-weight">57.0 <span>kg</span></div>
+          <div class="stat-sub">Goal: 70 kg</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">To Go</div>
+          <div class="stat-value" id="stat-togo">13.0 <span>kg</span></div>
+          <div class="stat-sub" id="stat-days-left">Days remaining</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Today's Calories</div>
+          <div class="stat-value" id="stat-cals">0 <span>kcal</span></div>
+          <div class="stat-sub" id="stat-cal-target">Target: 2800</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Water Today</div>
+          <div class="stat-value" id="stat-water">0 <span>/12</span></div>
+          <div class="stat-sub">glasses (3 litres)</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-head">
+            <h2>Overall Progress</h2>
+            <span class="tag tag-green" id="overall-pct">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar-label">
+              <span>57 kg</span><span>70 kg</span>
+            </div>
+            <div class="progress-bg"><div class="progress-fill" id="weight-bar" style="width:0%"></div></div>
+          </div>
+          <div class="mini-stats">
+            <div><span class="ms-num" id="ms-weeks">0</span><span class="ms-lbl">weeks done</span></div>
+            <div><span class="ms-num" id="ms-streak">0</span><span class="ms-lbl">day streak</span></div>
+            <div><span class="ms-num" id="ms-workouts">0</span><span class="ms-lbl">workouts</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>Today's Checklist</h2></div>
+          <ul class="quick-list" id="quick-checklist"></ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2>Weight History</h2></div>
+        <canvas id="weight-chart" height="160"></canvas>
+      </div>
+    </section>
+
+    <!-- TODAY PAGE -->
+    <section class="page" id="page-today">
+      <div class="page-header">
+        <div>
+          <h1>Today's Routine</h1>
+          <p class="subtitle" id="today-weekday"></p>
+        </div>
+        <div class="day-prog-wrap">
+          <span id="today-pct">0%</span>
+          <div class="day-ring-wrap"><svg class="day-ring" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#e5e7eb" stroke-width="2.5"/><circle id="ring-circle" cx="18" cy="18" r="15.9" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="0 100" stroke-linecap="round" transform="rotate(-90 18 18)"/></svg></div>
+        </div>
+      </div>
+
+      <div class="timeline" id="timeline"></div>
+
+      <div class="card" style="margin-top:1.5rem">
+        <div class="card-head"><h2>Water Intake</h2><span class="tag" id="water-tag">0 / 12 glasses</span></div>
+        <p class="hint">Tap each glass as you drink it. Aim for 3 litres daily.</p>
+        <div class="glasses-grid" id="glasses-grid"></div>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <div class="card-head"><h2>Log Today's Weight</h2></div>
+        <div class="weight-log-row">
+          <input type="number" id="wt-input" placeholder="e.g. 57.5" step="0.1" min="40" max="150" />
+          <span>kg</span>
+          <button class="btn-primary" onclick="logWeight()">Save</button>
+          <span id="wt-saved" class="saved-msg"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKOUT PAGE -->
+    <section class="page" id="page-workout">
+      <div class="page-header">
+        <div><h1>Workout Plan</h1><p class="subtitle">Weekly rotating split</p></div>
+        <div class="phase-toggle">
+          <button class="ptab active" id="ptab1" onclick="setWorkoutPhase(1)">Home</button>
+          <button class="ptab" id="ptab2" onclick="setWorkoutPhase(2)">Gym</button>
+        </div>
+      </div>
+      <div class="workout-grid" id="workout-grid"></div>
+    </section>
+
+    <!-- NUTRITION PAGE -->
+    <section class="page" id="page-nutrition">
+      <div class="page-header">
+        <div><h1>Nutrition Plan</h1><p class="subtitle">Budget-friendly · Under Rs. 500/day</p></div>
+      </div>
+      <div class="nutrition-tabs">
+        <button class="ntab active" onclick="setNutriPhase(1,this)">Month 1 (~2800 kcal)</button>
+        <button class="ntab" onclick="setNutriPhase(2,this)">Months 2–7 (~3200 kcal)</button>
+      </div>
+      <div id="meal-plan-grid"></div>
+      <div class="card" style="margin-top:1rem">
+        <div class="card-head"><h2>Key Principles</h2></div>
+        <ul class="principles-list">
+          <li>Always eat breakfast within 30 mins of your run</li>
+          <li>Add 1 tsp ghee to every roti — healthy fat for calorie surplus</li>
+          <li>Chana daal + moong daal are your cheapest protein sources</li>
+          <li>Full-fat milk over skimmed — you need the calories</li>
+          <li>Chicken karahi 3–4× per week keeps protein high on budget</li>
+          <li>Never skip the night snack — muscle builds overnight</li>
+          <li>Drink water between meals, not during — better digestion</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROGRESS PAGE -->
+    <section class="page" id="page-progress">
+      <div class="page-header">
+        <div><h1>Progress Tracker</h1><p class="subtitle">57 kg → 70 kg · Jun 2026 – Jan 2027</p></div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Starting Weight</div>
+          <div class="stat-value">57.0 <span>kg</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Current Weight</div>
+          <div class="stat-value" id="prog-cur">57.0 <span>kg</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Gained So Far</div>
+          <div class="stat-value" id="prog-gained">0.0 <span>kg</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Target Date</div>
+          <div class="stat-value" style="font-size:1.1rem">Jan 1 <span>2027</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>Weight Log</h2></div>
+        <canvas id="progress-chart" height="200"></canvas>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <div class="card-head"><h2>Monthly Targets</h2></div>
+        <div class="month-targets" id="month-targets"></div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE PAGE -->
+    <section class="page" id="page-schedule">
+      <div class="page-header">
+        <div><h1>Weekly Schedule</h1><p class="subtitle">Repeat every 7 days</p></div>
+      </div>
+      <div class="schedule-grid" id="schedule-grid"></div>
+      <div class="card" style="margin-top:1rem">
+        <div class="card-head"><h2>Daily Time Breakdown</h2></div>
+        <div class="time-blocks" id="time-blocks"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
